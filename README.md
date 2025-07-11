@@ -1,4 +1,38 @@
 # Reto-07
+
+## menu.json
+```python
+# Inicialización del menú
+menu_manager = Order()  # Esto crea el archivo menu.json vacío
+
+# Añadir ítems al menú
+menu_manager.add_menu_item("beverages", {
+    "name": "Limonada",
+    "price": 4.5,
+    "alcohol": False
+})
+
+menu_manager.add_menu_item("starters", {
+    "name": "Bruschetta",
+    "price": 8.0,
+    "portion": "Medium"
+})
+
+menu_manager.add_menu_item("main_courses", {
+    "name": "Pasta Carbonara",
+    "price": 14.5,
+    "protein": "Panceta",
+    "spicy": False,
+    "vegetarian": False
+})
+
+menu_manager.add_menu_item("desserts", {
+    "name": "Tiramisú",
+    "price": 6.8,
+    "level_sugar": "Medium",
+    "gluten_free": False
+})
+```
 ```
 Coke - $5.90
 Coke - $5.40
