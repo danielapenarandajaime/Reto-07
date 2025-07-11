@@ -93,7 +93,7 @@ menu_manager.add_menu_item("desserts", {
     "gluten_free": False
 })
 ```
-
+## Output
 ```
 Coke - $5.90
 Coke - $5.40
