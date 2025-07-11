@@ -1,5 +1,65 @@
 # Reto-07
-
+## FIFO Queue
+```python
+class OrderQueue:
+    def __init__(self):
+        self._queue = deque()
+    
+    def enqueue(self, order: "Order"):
+        self._queue.append(order)
+    
+    def dequeue(self) -> "Order":
+        if not self.is_empty():
+            return self._queue.popleft()
+        else: 
+            raise IndexError("La cola de pedidos está vacía")
+    
+    def is_empty(self) -> bool:
+        return len(self._queue) == 0
+    
+    def __len__(self):
+        return len(self._queue)
+    
+    def peek(self) -> "Order":
+        if not self.is_empty():
+            return self._queue[0]
+        else:
+            raise IndexError("La cola de pedidos está vacía")
+    
+class Restaurant:
+    def __init__(self):
+        self.order_queue = OrderQueue()
+        self.prepared_orders = []
+    
+    def receive_order(self, order: "Order"):
+        self.order_queue.enqueue(order)
+        print(f"Pedido recibido. Órdenes en cola: {len(self.order_queue)}")
+    
+    def process_next_order(self):
+        if not self.order_queue.is_empty():
+            next_order = self.order_queue.dequeue()
+            print(f"Preparando pedido: {[str(item) for item in next_order.items]}")
+            self.prepared_orders.append(next_order)
+            return next_order
+        else: 
+            print("No hay pedidos para procesar")
+            return None
+    
+    def serve_next_order(self):
+        if self.prepared_orders:
+            return self.prepared_orders.pop(0)
+        else:
+            print("No hay pedidos listos para servir")
+            return None
+```
+## Named Tuple
+```python
+discounts = DiscountRules(
+    general = 10.0,  
+    desserts = 4.0,  
+    kids = 10.0      
+)
+```
 ## menu.json
 ```python
 # Inicialización del menú
@@ -33,6 +93,7 @@ menu_manager.add_menu_item("desserts", {
     "gluten_free": False
 })
 ```
+
 ```
 Coke - $5.90
 Coke - $5.40
